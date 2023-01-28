@@ -36,7 +36,7 @@ public class ReservationServiceImpl implements ReservationService {
         Collections.sort(spotList, (s1, s2) -> s1.getPricePerHour() - s2.getPricePerHour());
         Spot spot1 = new Spot();
         for (Spot spot : spotList) {
-            if (spot.isOccupied() == false) {
+            if (spot.getOccupied() == false) {
                 if (spot.getSpotType() == SpotType.TWO_WHEELER && numberOfWheels == 2) {
                     spot1 = spot;
                     spot1.setSpotType(SpotType.TWO_WHEELER);

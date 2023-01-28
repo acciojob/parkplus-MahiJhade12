@@ -34,7 +34,7 @@ public class Spot {
         this.id = id;
     }
 
-    public boolean isOccupied() {
+    public boolean getOccupied() {
         return occupied;
     }
 
