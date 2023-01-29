@@ -27,9 +27,16 @@ public class Reservation {
 
      }
      public Reservation(int id,int numberOfHours){
-         this.id=id;
+         this.id =id;
          this.numberOfHours=numberOfHours;
      }
+
+    public Reservation(Integer numberOfHours, User user, Spot spot) {
+         this.numberOfHours=numberOfHours;
+         this.user=user;
+         this.spot=spot;
+    }
+
     public int getId() {
         return id;
     }
