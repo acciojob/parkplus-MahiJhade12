@@ -22,6 +22,14 @@ public class Reservation {
     @OneToOne(mappedBy = "reservation",cascade = CascadeType.ALL)
     private Payment payment;
 
+
+     public  Reservation(){
+
+     }
+     public Reservation(int id,int numberOfHours){
+         this.id=id;
+         this.numberOfHours=numberOfHours;
+     }
     public int getId() {
         return id;
     }

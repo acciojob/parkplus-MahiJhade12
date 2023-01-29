@@ -19,6 +19,13 @@ public class Payment {
     @JoinColumn
     private  Reservation reservation;
 
+    public Payment(){
+
+    }
+    public Payment(int id ,boolean paymentCompleted){
+        this.id=id;
+        this.paymentMode=getPaymentMode();
+    }
     public int getId() {
         return id;
     }
