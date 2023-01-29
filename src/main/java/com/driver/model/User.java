@@ -27,6 +27,13 @@ public class User {
         this.password=password;
         this.reservationList=reservationList;
     }
+
+    public User(String name, String password, String phoneNumber) {
+        this.name=name;
+        this.password=password;
+        this.phoneNumber=phoneNumber;
+    }
+
     public int getId() {
         return id;
     }
