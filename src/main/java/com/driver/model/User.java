@@ -17,21 +17,20 @@ public class User {
     List<Reservation> reservationList;
 
 
-    public  User(){
 
+    public User(String name, String phoneNumber, String password) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
     }
-    public User(int id,String name,String phoneNumber,String password,  List<Reservation> reservationList){
-        this.id=id;
-        this.name=name;
-        this.phoneNumber=phoneNumber;
-        this.password=password;
-        this.reservationList=reservationList;
+    public User(int id, String name, String phoneNumber, String password, List<Reservation> reservationList) {
+        this.id = id;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.reservationList = reservationList;
     }
-
-    public User(String name, String password, String phoneNumber) {
-        this.name=name;
-        this.password=password;
-        this.phoneNumber=phoneNumber;
+    public User() {
     }
 
     public int getId() {
