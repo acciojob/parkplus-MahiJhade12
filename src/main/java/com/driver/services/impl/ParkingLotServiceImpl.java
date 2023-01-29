@@ -70,7 +70,6 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 
     @Override
     public void deleteParkingLot(int parkingLotId) {
-       ParkingLot parkingLot= parkingLotRepository1.findById(parkingLotId).get();
-       parkingLotRepository1.delete(parkingLot);
+        parkingLotRepository1.deleteById(parkingLotId);
     }
 }
