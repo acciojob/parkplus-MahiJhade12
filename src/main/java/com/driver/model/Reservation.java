@@ -5,36 +5,26 @@ import javax.persistence.*;
 @Entity
 @Table(name = "reservation")
 public class Reservation {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private int numberOfHours;
-
     @ManyToOne
     @JoinColumn
     private User user;
-
     @ManyToOne
     @JoinColumn
     private Spot spot;
-
     @OneToOne(mappedBy = "reservation",cascade = CascadeType.ALL)
     private Payment payment;
 
+    public Reservation(int numberOfHours, User user, Spot spot) {
+        this.numberOfHours = numberOfHours;
+        this.user = user;
+        this.spot = spot;
+    }
 
-     public  Reservation(){
-
-     }
-     public Reservation(int id,int numberOfHours){
-         this.id =id;
-         this.numberOfHours=numberOfHours;
-     }
-
-    public Reservation(Integer numberOfHours, User user, Spot spot) {
-         this.numberOfHours=numberOfHours;
-         this.user=user;
-         this.spot=spot;
+    public Reservation(Integer timeInHours) {
     }
 
     public int getId() {
@@ -53,12 +43,12 @@ public class Reservation {
         this.numberOfHours = numberOfHours;
     }
 
-    public Payment getPayment() {
-        return payment;
+    public User getUser() {
+        return user;
     }
 
-    public void setPayment(Payment payment) {
-        this.payment = payment;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Spot getSpot() {
@@ -69,11 +59,29 @@ public class Reservation {
         this.spot = spot;
     }
 
-    public User getUser() {
-        return user;
+    public Payment getPayment() {
+        return payment;
     }
 
-    public void setUser(User user) {
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
+    public Reservation(int numberOfHours, User user, Spot spot, Payment payment) {
+        this.numberOfHours = numberOfHours;
         this.user = user;
+        this.spot = spot;
+        this.payment = payment;
+    }
+
+    public Reservation(int id, int numberOfHours, User user, Spot spot, Payment payment) {
+        this.id = id;
+        this.numberOfHours = numberOfHours;
+        this.user = user;
+        this.spot = spot;
+        this.payment = payment;
+    }
+
+    public Reservation() {
     }
 }
