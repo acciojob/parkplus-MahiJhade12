@@ -22,8 +22,6 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     @Override
     public ParkingLot addParkingLot(String name, String address) {
       ParkingLot parkingLot=new ParkingLot(name,address);
-      parkingLot.setName(name);
-      parkingLot.setAddress(address);
       parkingLotRepository1.save(parkingLot);
       return parkingLot;
     }
@@ -32,8 +30,6 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     public Spot addSpot(int parkingLotId, Integer numberOfWheels, Integer pricePerHour) {
       Spot spot=new Spot();
       ParkingLot parkingLot=parkingLotRepository1.findById(parkingLotId).get();
-      if(parkingLot!=null) {
-          spot.setParkingLot(parkingLot);
           if (numberOfWheels <= 2) {
               spot.setSpotType(SpotType.TWO_WHEELER);
           } else if (numberOfWheels > 2 && numberOfWheels <= 4) {
@@ -41,17 +37,13 @@ public class ParkingLotServiceImpl implements ParkingLotService {
           } else {
               spot.setSpotType(SpotType.OTHERS);
           }
-
           spot.setParkingLot(parkingLot);
           parkingLot.getSpotList().add(spot);
           spot.setPricePerHour(pricePerHour);
           spotRepository1.save(spot);
           parkingLotRepository1.save(parkingLot);
           return spot;
-      }
-      else {
-          throw new RuntimeException("not parking found");
-      }
+
     }
 
     @Override
