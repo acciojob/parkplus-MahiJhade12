@@ -28,9 +28,6 @@ public class ReservationServiceImpl implements ReservationService {
         List<Reservation> reservationList=reservationRepository3.findAll();
         User user = userRepository3.findById(userId).get();
         ParkingLot parkingLot = parkingLotRepository3.findById(parkingLotId).get();
-        if (parkingLot == null || user == null) {
-            throw new Exception("reservation can not made");
-        }
         int reservation_price = 0;
         List<Spot> spotList = parkingLot.getSpotList();
         Collections.sort(spotList, (s1, s2) -> s1.getPricePerHour() - s2.getPricePerHour());
@@ -53,8 +50,6 @@ public class ReservationServiceImpl implements ReservationService {
                     spot1.setOccupied(true);
                     break;
                 }
-            } else {
-                throw new Exception("reservation can not made");
             }
         }
         int reservationPayment=spot1.getPricePerHour()*timeInHours;
