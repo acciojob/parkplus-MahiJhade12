@@ -26,6 +26,10 @@ public class Payment {
         this.id=id;
         this.paymentMode=getPaymentMode();
     }
+
+    public Payment(boolean b, PaymentMode validPaymentMode) {
+    }
+
     public int getId() {
         return id;
     }
